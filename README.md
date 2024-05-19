@@ -14,7 +14,7 @@ multiplayer tic tac toe game where i used react , node-js and socketio
 Clone the project
 
 ```bash
-  git clone https://github.com/Phantom804/expense-tracker.git
+  git clone https://github.com/Phantom804/tic-tac-toe-multiplayer-game.git
 ```
 
 Install dependencies

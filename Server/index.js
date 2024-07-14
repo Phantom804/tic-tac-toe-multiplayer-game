@@ -1,6 +1,6 @@
 require('dotenv').config();
-import cors from "cors";
-import express from "express";
+const cors = require('cors');
+const express = require('express');
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 

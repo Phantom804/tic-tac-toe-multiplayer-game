@@ -1,14 +1,10 @@
 require('dotenv').config();
-const {cors} = require("cors");
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 
 const httpServer = createServer();
 const io = new Server(httpServer, {
-  cors: {
-    origin: process.env.CLIENT_BASE_URL,
-    methods: ["GET", "POST"]
-  }
+  cors: process.env.CLIENT_BASE_URL,
 });
 
 const allUsers = {};

@@ -13,12 +13,16 @@ const httpServer = createServer((req, res) => {
 });
 
 const io = new Server(httpServer, {
-  cors: process.env.CLIENT_BASE_URL,
+  cors: {
+    origin: true, // Allow requests from any origin
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    credentials: true
+  }
 });
 
 // Use CORS middleware
 app.use(cors({
-  origin: process.env.CLIENT_BASE_URL,
+  origin: true, // Allow requests from any origin
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   credentials: true
 }));

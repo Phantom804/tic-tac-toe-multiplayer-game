@@ -2,7 +2,13 @@ require('dotenv').config();
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 
-const httpServer = createServer();
+const httpServer = createServer((req, res) => {
+  if (req.url === '/') {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hello World');
+  }
+});
+
 const io = new Server(httpServer, {
   cors: process.env.CLIENT_BASE_URL,
 });

@@ -1,10 +1,9 @@
 require('dotenv').config();
-const cors = require('cors');
-const express = require('express');
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 
-const app = express();
+
+
 const httpServer = createServer((req, res) => {
   if (req.url === '/') {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
@@ -13,19 +12,9 @@ const httpServer = createServer((req, res) => {
 });
 
 const io = new Server(httpServer, {
-  cors: {
-    origin: true, // Allow requests from any origin
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    credentials: true
-  }
+  cors: process.env.CLIENT_BASE_URL,
 });
 
-// Use CORS middleware
-app.use(cors({
-  origin: true, // Allow requests from any origin
-  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-  credentials: true
-}));
 
 const allUsers = {};
 const allRooms = [];
